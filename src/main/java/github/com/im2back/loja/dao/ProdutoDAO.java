@@ -1,5 +1,6 @@
 package github.com.im2back.loja.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import github.com.im2back.loja.model.produto.Produto;
@@ -38,5 +39,13 @@ public class ProdutoDAO {
             return em.createQuery(jpql, Produto.class)
             		.setParameter("nome", nome) // método para setar o parametro na JPQL
             		.getResultList();
+    }
+    
+    public BigDecimal exibirSomentePreco(String nome) {
+        String jpql = "SELECT p.preco FROM Produto p WHERE p.nome = :nome";
+        	
+            return em.createQuery(jpql, BigDecimal.class)
+            		.setParameter("nome", nome) // método para setar o parametro na JPQL
+            		.getSingleResult();
     }
 }
