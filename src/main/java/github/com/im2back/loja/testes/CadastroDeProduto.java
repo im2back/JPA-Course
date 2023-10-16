@@ -1,6 +1,7 @@
 package github.com.im2back.loja.testes;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import github.com.im2back.loja.dao.CategoriaDAO;
 import github.com.im2back.loja.dao.ProdutoDAO;
@@ -11,8 +12,20 @@ import jakarta.persistence.EntityManager;
 
 public class CadastroDeProduto {
 	
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {	
+		cadastrarProduto();
+		EntityManager em = JpaUTIL.getEntityManager();
+        ProdutoDAO produtoDao = new ProdutoDAO(em);
+        
+        Produto p = produtoDao.buscarPorId(1l);
+        System.out.println(p.getPreco());
+        
+
+		List<Produto> todos = produtoDao.buscarPorNomeDaCategoria("celulares");
+		todos.forEach(p2 -> System.out.println(p2.getNome()));
+	}
+
+	private static void cadastrarProduto() {
 		Categoria categoria = new Categoria("celulares");
 		
 		Produto celular  = new Produto("samsumg","celular bom",new BigDecimal(400), categoria); 

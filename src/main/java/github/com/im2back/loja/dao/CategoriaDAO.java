@@ -2,6 +2,7 @@ package github.com.im2back.loja.dao;
 
 import github.com.im2back.loja.model.produto.Categoria;
 import jakarta.persistence.EntityManager;
+import lombok.NoArgsConstructor;
 
 public class CategoriaDAO {
 	
