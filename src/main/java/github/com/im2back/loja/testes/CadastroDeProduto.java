@@ -3,6 +3,7 @@ package github.com.im2back.loja.testes;
 import java.math.BigDecimal;
 
 import github.com.im2back.loja.dao.ProdutoDAO;
+import github.com.im2back.loja.model.produto.Categoria;
 import github.com.im2back.loja.model.produto.Produto;
 import github.com.im2back.loja.util.JpaUTIL;
 import jakarta.persistence.EntityManager;
@@ -10,11 +11,8 @@ import jakarta.persistence.EntityManager;
 public class CadastroDeProduto {
 	
 	public static void main(String[] args) {
-		Produto celular  = new Produto(); 
-		celular.setNome("samsumg s20");
-		celular.setDescricao("muito bom aparelho");
-		celular.setPreco(new BigDecimal(400));
-		
+		Produto celular  = new Produto("samsumg","celular bom",new BigDecimal(400), Categoria.CELULARES); 
+
 		//comandos para inserção no banco de dados
 		
 		EntityManager em = JpaUTIL.getEntityManager();

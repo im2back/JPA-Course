@@ -1,13 +1,15 @@
 package github.com.im2back.loja.model.produto;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +24,7 @@ tabela como o mesmo nome da nossa entidade, nesse caso "Produto"*/
 
 @Getter
 @Setter
-@AllArgsConstructor
+
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Produto {
@@ -41,5 +43,21 @@ public class Produto {
 	private String descricao;
 	
 	private BigDecimal preco;
+	
+	private LocalDate  dataCadastro = LocalDate.now();
+	
+	@Enumerated(EnumType.STRING) /*Anotação usada para salvar(no banco de dados) nosso tipo enumerado como uma STRING */
+	private Categoria  categoria;
+
+
+	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
+		this.categoria = categoria;
+	}
+	
+	
 
 }
