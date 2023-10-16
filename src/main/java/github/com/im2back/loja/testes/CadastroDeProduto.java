@@ -2,10 +2,10 @@ package github.com.im2back.loja.testes;
 
 import java.math.BigDecimal;
 
+import github.com.im2back.loja.dao.ProdutoDAO;
 import github.com.im2back.loja.model.produto.Produto;
+import github.com.im2back.loja.util.JpaUTIL;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 public class CadastroDeProduto {
 	
@@ -15,10 +15,14 @@ public class CadastroDeProduto {
 		celular.setDescricao("muito bom aparelho");
 		celular.setPreco(new BigDecimal(400));
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("loja");
-		EntityManager em =  factory.createEntityManager();
+		//comandos para inserção no banco de dados
+		
+		EntityManager em = JpaUTIL.getEntityManager();
+		
+		ProdutoDAO dao = new ProdutoDAO(em);
+		
 		em.getTransaction().begin();
-		em.persist(celular);
+		dao.cadastrar(celular);//em.persist(celular);
 		em.getTransaction().commit();
 		em.close();
 	}
