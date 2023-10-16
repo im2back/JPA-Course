@@ -4,11 +4,10 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -46,7 +45,13 @@ public class Produto {
 	
 	private LocalDate  dataCadastro = LocalDate.now();
 	
-	@Enumerated(EnumType.STRING) /*Anotação usada para salvar(no banco de dados) nosso tipo enumerado como uma STRING */
+	/*Situalção 1 - @Enumerated(EnumType.STRING) Anotação usada para salvar(no banco de dados) nosso tipo enumerado como uma STRING 
+	private Categoria  categoria; */
+	
+	/*Situação 2 - Temos a tabela produto relacionada com a tabela categoria, assim sendo temos que definir a cardinalidade que neste caso é  : 
+	  Um produto esta vinculado a uma categoria, porém uma categoria pode estar vinculada a varios produtos  (Produto * ----- 1 Categoria)
+	  a anotação que define essa relação é a @ManyToOne(muitos para um*----1)        */
+	@ManyToOne
 	private Categoria  categoria;
 
 
