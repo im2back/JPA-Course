@@ -5,7 +5,7 @@ import java.util.List;
 
 import github.com.im2back.loja.dao.CategoriaDAO;
 import github.com.im2back.loja.dao.ProdutoDAO;
-import github.com.im2back.loja.model.produto.Categoria;
+import github.com.im2back.loja.model.Categoria.Categoria;
 import github.com.im2back.loja.model.produto.Produto;
 import github.com.im2back.loja.util.JpaUTIL;
 import jakarta.persistence.EntityManager;

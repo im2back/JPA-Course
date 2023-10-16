@@ -1,4 +1,4 @@
-package github.com.im2back.loja.model.produto;
+package github.com.im2back.loja.model.Categoria;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

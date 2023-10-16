@@ -2,6 +2,7 @@ package github.com.im2back.loja.model.produto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import github.com.im2back.loja.model.Categoria.Categoria;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
