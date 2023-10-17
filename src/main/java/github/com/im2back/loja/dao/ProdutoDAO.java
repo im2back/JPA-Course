@@ -48,4 +48,6 @@ public class ProdutoDAO {
             		.setParameter("nome", nome) // método para setar o parametro na JPQL
             		.getSingleResult();
     }
+    
+ 
 }

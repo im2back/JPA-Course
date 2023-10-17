@@ -29,7 +29,7 @@ public class Pedido {
 	
 	private LocalDate data = LocalDate.now();
 	
-	private BigDecimal valorTotal;
+	private BigDecimal valorTotal = new BigDecimal(0);
 	
 	@ManyToOne
 	private Cliente cliente;
@@ -38,7 +38,7 @@ public class Pedido {
 	crie uma tabela desnecessaria  vamos acressentar um atributo chamado (mappedBy = "pedido") e passando como string o nome do atributo que esta 
 	mapeado "outro lado do relacionamento" que esta mapeado*/
 	
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL) /*cascade = CascadeType.ALL se eu salvar umpedido automaticamente ele salva o item*/
+	@OneToMany(mappedBy = "pedido",cascade = CascadeType.ALL) /*cascade = CascadeType.ALL se eu salvar umpedido automaticamente ele salva o item*/
 	private List<ItemPedido> items = new ArrayList<>();
 	
 	public Pedido(Cliente cliente) {
@@ -50,6 +50,7 @@ public class Pedido {
 	public void adicionarItem(ItemPedido item) {
 		item.setPedido(this);//item conhece o pedido
 		this.items.add(item);// pedido conhece o item
+		this.valorTotal = this.valorTotal.add(item.valorTotal());
 	}
 
 	

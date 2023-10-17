@@ -45,5 +45,13 @@ public class ItemPedido {
 		this.produto = produto;
 	}
 	
-	
+	public BigDecimal valorTotal() {
+		
+		int quantidade = this.quantidade;
+		BigDecimal quantidadeDecimal = new BigDecimal(quantidade);
+		BigDecimal preco = this.precoUnitario;		
+		BigDecimal mult = preco.multiply(quantidadeDecimal);
+		
+		return mult;
+	}
 }

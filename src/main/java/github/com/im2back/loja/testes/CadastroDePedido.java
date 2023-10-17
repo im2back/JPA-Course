@@ -24,23 +24,25 @@ public class CadastroDePedido {
 		
 		/*Recuperando  um produto e um cliente que ja foram préviamente cadastrados na nossa Data-Base pelo método popularDataBase(); */
 		ProdutoDAO produtoDao = new ProdutoDAO(em);
-		Produto produto = produtoDao.buscarPorId(1l);
-		
 		ClienteDAO clienteDao = new ClienteDAO(em);
+		
 		Cliente cliente = clienteDao.buscarPorId(1l);
+		Produto produto = produtoDao.buscarPorId(1l);
 		/*Recuperando  um produto e um cliente que ja foram préviamente cadastrados na nossa Data-Base pelo método popularDataBase(); */
 		
 		em.getTransaction().begin();
 		
 		/*Cadastrando um novo pedido, passando como parametro o cliente resgatado da DataBase*/	
 		Pedido pedido = new Pedido(cliente);
-		pedido.adicionarItem(new ItemPedido(2, pedido, produto));
+		pedido.adicionarItem(new ItemPedido(10, pedido, produto));
 		
 		PedidoDAO pedidoDAO = new PedidoDAO(em);
 		pedidoDAO.cadastrar(pedido);
 		
-		
 		em.getTransaction().commit();
+		
+		BigDecimal totalVendido = pedidoDAO.valorTotalVendido();
+		System.out.println("VALOR TOTAL" + totalVendido);
 	}
 
 
