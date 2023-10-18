@@ -8,6 +8,7 @@ import java.util.List;
 import github.com.im2back.loja.model.cliente.Cliente;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,7 +32,10 @@ public class Pedido {
 	
 	private BigDecimal valorTotal = new BigDecimal(0);
 	
-	@ManyToOne
+	/*Por padrão, ao fazer uma consulta na db utilizando jqpl, a entidade que tem um relacionamento do tipo
+	 "ToOne" sempre será carregada junto, mesmo que não seje solicitada* para evitar problemas de performance
+	 por carregamentos de informalções desnecessarias, o parametro (fetch = FetchType.LAZY) ao lado da @Anotacao */
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente cliente;
 	
 	/*ao fazer o mapeamento dos dois lados, isso torna um relacionamento bidirecional. Para evitar que o JPA interprete errado e 

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import github.com.im2back.loja.model.Categoria.Categoria;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -52,7 +53,7 @@ public class Produto {
 	/*Situação 2 - Temos a tabela produto relacionada com a tabela categoria, assim sendo temos que definir a cardinalidade que neste caso é  : 
 	  Um produto esta vinculado a uma categoria, porém uma categoria pode estar vinculada a varios produtos  (Produto * ----- 1 Categoria)
 	  a anotação que define essa relação é a @ManyToOne(muitos para um*----1)        */
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Categoria  categoria;
 
 

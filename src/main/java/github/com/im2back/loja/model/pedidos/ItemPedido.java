@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import github.com.im2back.loja.model.produto.Produto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,10 +32,10 @@ public class ItemPedido {
 	
 	/*Agora vamos colocar as instancias de Pedido e do Produto associados a esa classe e colocar as anotações cardinais, neste caso também
 	 vamos fazer o mapeamento na outra classe também por ex: na classe Pedido no atributo private   @OneToMany List<ItemPedido> items */
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Pedido pedido;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Produto produto;
 	
 	public ItemPedido(int quantidade, Pedido pedido, Produto produto) {
