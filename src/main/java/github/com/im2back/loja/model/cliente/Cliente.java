@@ -17,13 +17,14 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private String cpf;
+	
+	@jakarta.persistence.Embedded
+	private DadosPessoais dadosPessoais;
 	
 	public Cliente(String nome, String cpf) {
 		super();
-		this.nome = nome;
-		this.cpf = cpf;
+		this.dadosPessoais = new DadosPessoais(nome, cpf);  
+		
 	}
 
 }
