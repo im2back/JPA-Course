@@ -9,8 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Informatica {
+public class Informatica extends Produto {
 	private String marca;
 	private String modelo;
-	
+
 }
