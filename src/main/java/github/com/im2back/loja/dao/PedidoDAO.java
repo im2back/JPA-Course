@@ -38,4 +38,23 @@ public class PedidoDAO {
 			
 			return em.createQuery(jpql,RelatorioDeVendasVo.class).getResultList();
 		}
+	  
+	  /*Consulta utlizando parameteos dinamicos
+	   * public List<Cliente> buscarClientes(String nome, LocalDate dataNascimento) {
+		    String jpql = "SELECT c FROM Cliente c WHERE ";
+		    if (nome != null && !nome.trim().isEmpty()) {
+		        jpql += "AND c.nome = :nome ";
+		    }
+		    if (dataNascimento != null) {
+		        jpql += " AND c.dataNascimento = :dataNascimento ";
+		    }
+		    TypedQuery<Cliente> query = em.createQuery(jpql, Cliente.class);
+		    if (nome != null && !nome.trim().isEmpty()) {
+		        query.setParameter("nome", nome);
+		    }
+		    if (dataNascimento != null) {
+		        query.setParameter("dataNascimento", dataNascimento);
+		    }
+		    return query.getResultList();
+		} */
 }
